@@ -14,7 +14,24 @@ class ApiUtils {
         
         const loginResponseJson = await loginResponse.json();
         const token = await loginResponseJson.token;
+
         return token;
+    }
+
+    async getProductsCount(token) {
+
+        const productsCountResponse = await this.apiContext.post("https://rahulshettyacademy.com/api/ecom/product/get-all-products", 
+        {
+            headers: {
+                'Authorization': token, 
+                'Accept': 'application/json'
+            }
+        });
+
+        const productsCountResponseJson = await productsCountResponse.json();
+        const productsCount = await productsCountResponseJson.count;
+
+        return productsCount;
     }
 
     async getOrderId(orderPayLoad, token) {
@@ -29,9 +46,25 @@ class ApiUtils {
         });
         
         const orderResponseJson = await orderResponse.json();
-        const orderId = orderResponseJson.orders[0];
+        const orderId = await orderResponseJson.orders[0];
 
         return orderId;
+    }
+
+    async deleteOrder(orderId, token) {
+
+        const deleteResponse = await this.apiContext.delete(`https://rahulshettyacademy.com/api/ecom/order/delete-order/${orderId}`, 
+        {
+            headers: {
+                'Authorization': token, 
+                'Accept': 'application/json'
+            }
+        });
+
+        const deleteResponseJson = await deleteResponse.json();
+        const deleteMessage = await deleteResponseJson.message;
+
+        return deleteMessage;
     }
 }
 
