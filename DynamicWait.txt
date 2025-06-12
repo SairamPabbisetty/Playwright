@@ -1,0 +1,28 @@
+
+-----------------------
+await page.waitForLoadState('networkidle');
+        
+This Playwright command waits until there are no more network requests for a brief period.
+Sometimes a page might look visually ready, but it's still loading scripts, images, or making API calls in the background.
+'networkidle' ensures that no more network requests are being made before proceeding to the next step.
+-----------------------
+
+-----------------------
+Alternative loads 
+
+'domcontentloaded' - Waits until the DOM is fully loaded, but may still be fetching external resources
+'load' - Waits until the whole page, including styles, images, and scripts, has loaded
+'networkidle' - Waits until there are no active network requests for a short period 
+------------------------
+
+------------------------
+await page.locator(".card-body a").waitFor();
+
+page.locator(".card-body a") → Finds all <a> elements inside an element with the .card-body class.
+
+waitFor() → Waits for at least one matching element to appear before proceeding.
+
+When should you use waitFor()?
+If the element is not immediately available when the page loads.
+If it appears dynamically after an event, like an API response or user interaction.
+-------------------------

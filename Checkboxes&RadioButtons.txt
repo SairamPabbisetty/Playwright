@@ -1,0 +1,29 @@
+Checkboxes and radio buttons
+
+Using locator.setChecked() is the easiest way to check and uncheck a checkbox or a radio button. This method can be used with input[type=checkbox], input[type=radio] and [role=checkbox] elements.
+
+// Check the checkbox
+await page.getByLabel('I agree to the terms above').check();
+
+// Select the radio button
+await page.getByLabel('XL').click(); 
+
+---------------------------
+
+Checkbox assertions 
+
+await expect(page.locator('#accept-terms')).toBeChecked(); // Check if checkbox is selected
+await expect(page.locator('#accept-terms')).not.toBeChecked(); // Check if checkbox is NOT selected
+await expect(page.locator('#accept-terms')).isEnabled(); // Verify checkbox is enabled
+await expect(page.locator('#accept-terms')).isDisabled(); // Verify checkbox is disabled
+await expect(page.locator('#accept-terms')).toBeVisible(); // Ensure checkbox is visible
+
+----------------------------
+
+Radio Button Assertions
+
+await expect(page.locator('input[type="radio"][value="option1"]')).toBeChecked(); // Check if selected radio button is checked
+await expect(page.locator('input[type="radio"][value="option2"]')).not.toBeChecked(); // Check if a radio button is NOT checked
+await expect(page.locator('input[type="radio"][value="option1"]')).isEnabled(); // Verify radio button is enabled
+await expect(page.locator('input[type="radio"][value="option1"]')).isDisabled(); // Verify radio button is disabled
+await expect(page.locator('input[type="radio"][value="option1"]')).toBeVisible(); // Ensure radio button is visible 

@@ -1,0 +1,48 @@
+command-line attributes for running Playwright scripts:
+-------------------------------------------------------
+
+Basic Execution Options:
+------------------------
+--headed → Runs the browser in headed mode (visible UI).
+
+--debug → Enables debugging mode for better insights.
+
+--trace on → Captures traces for debugging test failures.
+
+
+Parallel & Browser Control:
+---------------------------
+--workers=<number> → Runs tests in parallel using multiple workers.
+
+--browser=<name> → Specifies the browser (chromium, firefox, webkit).
+
+--device=<name> → Emulates a mobile device (e.g., iPhone 12).
+
+
+Timeout & Retry Handling:
+-------------------------
+--timeout=<ms> → Sets a custom timeout for tests.
+
+--retries=<number> → Defines the number of retries for failed tests.
+
+
+Filtering & Running Specific Tests:
+-----------------------------------
+--grep="<pattern>" → Runs tests matching a pattern.
+
+--grep-invert="<pattern>" → Excludes tests matching a pattern.
+
+--project=<name> → Runs tests for a specific project.
+
+
+Debugging & Reporting:
+----------------------
+--reporter=<type> → Specifies a report format (list, json, html).
+
+--output=<path> → Defines the output directory for reports.
+
+
+Example Usage: 
+--------------
+npx playwright test --headed --browser=chromium --timeout=60000 --trace on
+This command runs tests in headed mode, using Chromium, with a 60-second timeout, and tracing enabled.

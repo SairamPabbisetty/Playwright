@@ -1,0 +1,128 @@
+Playwright Special Locators
+
+========================================
+1. getByText()
+========================================
+Finds elements by their visible text content.
+
+Usage:
+----------------------------------------
+await page.getByText("Submit").click();
+----------------------------------------
+
+Example HTML:
+<button>Submit</button>
+
+Best for:
+✅ Buttons, links, headings, and any element with visible text.
+
+========================================
+2. getByRole()
+========================================
+Finds elements by their ARIA role (e.g., button, link, textbox).
+
+Usage:
+----------------------------------------
+await page.getByRole("button", { name: "Submit" }).click();
+----------------------------------------
+
+Example HTML:
+<button>Submit</button>
+
+Best for:
+✅ Accessibility-friendly testing.
+
+========================================
+3. getByLabel()
+========================================
+Finds elements associated with a <label>.
+
+Usage:
+----------------------------------------
+await page.getByLabel("Username").fill("JohnDoe");
+----------------------------------------
+
+Example HTML:
+<label for="username">Username</label>
+<input id="username" type="text">
+
+Best for:
+✅ Forms and accessibility.
+
+========================================
+4. getByPlaceholder()
+========================================
+Finds input fields by their placeholder text.
+
+Usage:
+----------------------------------------
+await page.getByPlaceholder("Enter your email").fill("test@example.com");
+----------------------------------------
+
+Example HTML:
+<input type="email" placeholder="Enter your email">
+
+Best for:
+✅ Input fields with placeholder hints.
+
+========================================
+5. getByAltText()
+========================================
+Finds elements by their alt text (used for images).
+
+Usage:
+----------------------------------------
+await page.getByAltText("Company Logo").click();
+----------------------------------------
+
+Example HTML:
+<img src="logo.png" alt="Company Logo">
+
+Best for:
+✅ Images with meaningful alt text.
+
+========================================
+6. getByTitle()
+========================================
+Finds elements by their title attribute.
+
+Usage:
+----------------------------------------
+await page.getByTitle("Profile Settings").click();
+----------------------------------------
+
+Example HTML:
+<button title="Profile Settings">⚙️</button>
+
+Best for:
+✅ Elements with tooltips or extra descriptions.
+
+========================================
+7. getByTestId()
+========================================
+Finds elements by their data-testid attribute (commonly used in testing).
+
+Usage:
+----------------------------------------
+await page.getByTestId("login-button").click();
+----------------------------------------
+
+Example HTML:
+<button data-testid="login-button">Login</button>
+
+Best for:
+✅ Stable test selectors.
+
+========================================
+Conclusion
+========================================
+| Locator          | Best Use Case                         |
+|------------------|--------------------------------------|
+| getByText()      | Buttons, links, headings            |
+| getByRole()      | Accessibility-friendly elements     |
+| getByLabel()     | Form inputs linked to labels        |
+| getByPlaceholder() | Input fields with placeholder hints |
+| getByAltText()   | Images with alt text                |
+| getByTitle()     | Elements with title attributes      |
+| getByTestId()    | Testing-specific elements           |
+

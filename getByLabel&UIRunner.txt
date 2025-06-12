@@ -1,0 +1,68 @@
+Playwright: getByLabel() and UI Runner
+
+========================================
+1. getByLabel() in Playwright
+========================================
+getByLabel() is a Playwright locator used to find elements based on their associated <label> text.
+
+How it Works:
+- Selects elements linked to a <label> using the "for" attribute.
+- Works even when the input is wrapped inside a <label> without "for".
+
+Example Usage:
+----------------------------------------
+HTML:
+<label for="username">Username</label>
+<input id="username" type="text">
+
+Playwright Code:
+await page.getByLabel("Username").fill("JohnDoe");
+----------------------------------------
+
+Implicit Label Example:
+----------------------------------------
+HTML:
+<label>
+  Email
+  <input type="email">
+</label>
+
+Playwright Code:
+await page.getByLabel("Email").fill("test@example.com");
+----------------------------------------
+
+Why Use getByLabel()?
+✅ More reliable than CSS selectors.
+✅ Works across different screen readers (good for accessibility).
+✅ Avoids brittle XPath or complex selectors.
+
+========================================
+2. Playwright UI Mode (UI Runner)
+========================================
+Playwright UI Mode (also called UI Runner) is a visual debugging tool that helps:
+- Run tests interactively with a UI.
+- See selectors in action.
+- Step through tests visually.
+
+How to Use Playwright UI Mode:
+----------------------------------------
+Run Playwright tests in UI mode:
+npx playwright test --ui
+----------------------------------------
+
+What happens?
+- Opens a UI dashboard.
+- Shows test results visually.
+- Allows interactive debugging.
+
+Key Features:
+✅ Step through tests one by one.
+✅ See live DOM snapshots.
+✅ Inspect locators easily.
+✅ Rerun failed tests quickly.
+
+========================================
+Conclusion
+========================================
+- getByLabel() is great for finding elements by label text (better for accessibility).
+- Playwright UI Mode helps debug tests visually and interactively.

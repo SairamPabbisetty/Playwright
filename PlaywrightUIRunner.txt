@@ -1,0 +1,31 @@
+
+========================================
+Playwright UI Mode (UI Runner)
+========================================
+Playwright UI Mode (also called UI Runner) is a visual debugging tool that helps:
+- Run tests interactively with a UI.
+- See selectors in action.
+- Step through tests visually.
+
+How to Use Playwright UI Mode:
+----------------------------------------
+Run Playwright tests in UI mode:
+npx playwright test --ui
+----------------------------------------
+
+What happens?
+- Opens a UI dashboard.
+- Shows test results visually.
+- Allows interactive debugging.
+
+Key Features:
+✅ Step through tests one by one.
+✅ See live DOM snapshots.
+✅ Inspect locators easily.
+✅ Rerun failed tests quickly.
+
+========================================
+Conclusion
+========================================
+- getByLabel() is great for finding elements by label text (better for accessibility).
+- Playwright UI Mode helps debug tests visually and interactively.

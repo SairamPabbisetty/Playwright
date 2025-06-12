@@ -1,0 +1,74 @@
+Playwright commands related to codegen, recording, and playback:
+----------------------------------------------------------------
+
+Codegen (Test Generation):
+--------------------------
+npx playwright codegen <URL> → Opens a browser and records user interactions to generate test scripts.
+
+npx playwright codegen --device="iPhone 12" <URL> → Records interactions with mobile emulation.
+
+npx playwright codegen --target=python <URL> → Generates test scripts in Python instead of JavaScript.
+
+
+Recording & Debugging:
+----------------------
+npx playwright test --debug → Runs tests in debug mode with Playwright Inspector.
+
+npx playwright test --trace on → Enables tracing to capture test execution details.
+
+npx playwright test --headed → Runs tests in headed mode (visible browser UI).
+
+npx playwright test --slow-mo=1000 → Slows down execution for better debugging.
+
+
+Playback & Execution:
+---------------------
+npx playwright test → Runs all Playwright tests.
+
+npx playwright test <test-file> → Runs a specific test file.
+
+npx playwright test --project=chromium → Runs tests only in Chromium.
+
+npx playwright test --grep="<pattern>" → Runs tests matching a pattern.
+
+Tracing & Reporting:
+---------------------
+npx playwright show-trace trace.zip → Opens trace viewer for debugging.
+
+npx playwright test --reporter=html → Generates an HTML test report.
+
+
+config file:
+------------
+import { defineConfig } from '@playwright/test';
+
+export default defineConfig({
+  use: {
+    headless: false, // Runs tests in headed mode
+    trace: 'on', // Enables tracing for debugging
+    screenshot: 'on', // Captures screenshots on failure
+    video: 'on', // Records video for failed tests
+    viewport: { width: 1280, height: 720 }, // Sets default viewport size
+    baseURL: 'https://example.com', // Defines a base URL
+    launchOptions: {
+      slowMo: 500, // Slows down interactions for better visibility
+    },
+  },
+  projects: [
+    {
+      name: 'chromium',
+      use: { browserName: 'chromium' },
+    },
+    {
+      name: 'firefox',
+      use: { browserName: 'firefox' },
+    },
+    {
+      name: 'webkit',
+      use: { browserName: 'webkit' },
+    },
+  ],
+  reporter: [['html', { outputFolder: 'test-results' }]], // Generates HTML reports
+  timeout: 60000, // Sets default test timeout (60 sec)
+  retries: 2, // Retries failed tests twice
+});
